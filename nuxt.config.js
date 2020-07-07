@@ -41,13 +41,21 @@ export default {
     '@nuxtjs/apollo'
   ],
   apollo: {
+        // optional
+        watchLoading: '~/plugins/apollo-watch-loading-handler.js',
+        // optional
+        errorHandler: '~/plugins/apollo-error-handler.js',
     clientConfigs: {
       default: {
         // httpEndpoint: "https://www.orderchamp.test/api/internal/graphql"
-        httpEndpoint: "https://www.orderchamp.test/api/internal/graphql"
+        // httpEndpoint: "http://localhost:8080/graphql/",
+        httpEndpoint: "https://rickandmortyapi.com/graphql/"
       }
     }
   },
+  serverMiddleware: [
+    '~/server/logger'
+  ],
   /*
   ** Build configuration
   */

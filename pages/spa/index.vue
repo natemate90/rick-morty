@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <logo />
-        {{ categories }}
+        <!-- {{ categories }} -->
       <h1 class="title">
         rick-morty
       </h1>
@@ -10,6 +10,7 @@
         My super-excellent Nuxt.js project
       </h2>
       <div class="links">
+        <nuxt-link to="/">ROOT</nuxt-link>
         <a
           href="https://nuxtjs.org/"
           target="_blank"
@@ -17,13 +18,11 @@
         >
           Documentation
         </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
+        <div
           class="button--grey"
         >
-          GitHub
-        </a>
+          {{characters}}
+        </div>
       </div>
     </div>
   </div>
@@ -39,31 +38,19 @@ export default {
   },
 
   apollo: {
-      categories: gql`
-          query categoriesQuery {
-        categories(first: 5) {
-            edges {
-                cursor
-                node {
-                    listings(first: 1) {
-                        edges {
-                            node {
-                                description
-                                translation {
-                                    description
-                                    title
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-  `
+    characters: gql`
+      query getCharacters {
+          characters {
+              results {
+                  id
+                  name
+              }
+          }
+      }
+    `
   }
 }
+
 </script>
 
 <style>

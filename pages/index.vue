@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <logo />
-        <!-- {{ characters }} -->
+        {{ characters }}
       <h1 class="title">
         rick-morty
       </h1>
@@ -31,25 +31,25 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-// import gql from 'graphql-tag'
+import gql from 'graphql-tag'
 
 export default {
   components: {
     Logo
   },
 
-  // apollo: {
-  //     characters: gql`
-  //     query getCharacters {
-  //         characters {
-  //             results {
-  //                 id
-  //                 name
-  //             }
-  //         }
-  //     }
-  // `
-  // }
+  apollo: {
+      characters: gql`
+      query getCharacters {
+          characters {
+              results {
+                  id
+                  name
+              }
+          }
+      }
+  `
+  }
 }
 </script>
 
